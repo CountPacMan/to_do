@@ -1,14 +1,16 @@
-# Tasks for Epicodus
+# To Do Tasks for Epicodus
 ## by Daniel Toader and Cynthia Wilhelm
-### Date: March 16, 2015
+### Date: March 18, 2015
 #### Description
-Creates tasks and categories and saves them to a PostgreSQL database.
+This is a major update to the Tasks code we had created earlier. Creates tasks and categories and saves them to a PostgreSQL database. User can update and delete categories now.
 
 #### Setup instructions
 1. Clone this git repository
-2. Set your localhost root folder to ~/tasks/web/
+2. Set your localhost root folder to ~/to_do/web/
 3. Ensure PHP server is running.
-4. Start the web app by pointing your browser to the root (http://localhost:8000/)  
+4. Start Postgres and import to_do.sql database into a new database to_do
+5. Use Composer to install required dependencies in the composer.json file
+6. Start the web app by pointing your browser to the root (http://localhost:8000/)
 
 #### Copyright © 2015, Daniel Toader and Cynthia Wilhelm
 
