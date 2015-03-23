@@ -11,3 +11,7 @@ h5 {
   font-style: italic;
   margin: 0;
 }
+
+button {
+  float: right;
+}
