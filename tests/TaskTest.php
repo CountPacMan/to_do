@@ -19,7 +19,7 @@
     function test_save() {
       // Arrange
       $description = "Wash the dog";
-      $test_task = new Task($description, 1);
+      $test_task = new Task($description);
 
       // Act
       $test_task->save();
@@ -33,9 +33,9 @@
       // Arrange
       $description = "Wash the dog";
       $description2 = "Water the lawn";
-      $test_Task = new Task($description, 1);
+      $test_Task = new Task($description);
       $test_Task->save();
-      $test_Task2 = new Task($description2, 1);
+      $test_Task2 = new Task($description2);
       $test_Task2->save();
 
       // Act
@@ -49,9 +49,9 @@
       // Arrange
       $description = "Wash the dog";
       $description2 = "Water the lawn";
-      $test_Task = new Task($description, 1);
+      $test_Task = new Task($description);
       $test_Task->save();
-      $test_Task2 = new Task($description2, 1);
+      $test_Task2 = new Task($description2);
       $test_Task2->save();
 
       // Act
@@ -66,7 +66,7 @@
       // Arrange
       $description = "Wash the dog";
       $id = 1;
-      $test_Task = new Task($description, 1, $id);
+      $test_Task = new Task($description, $id);
 
       // Act
       $result = $test_Task->getId();
@@ -78,7 +78,7 @@
     function test_setId() {
       // Arrange
       $description = "Wash the dog";
-      $test_Task = new Task($description, 1);
+      $test_Task = new Task($description);
 
       // Act
       $test_Task->setId(2);
@@ -92,9 +92,9 @@
       // Arrange
       $description = "Wash the dog";
       $description2 = "Water the lawn";
-      $test_Task = new Task($description, 1, 1);
+      $test_Task = new Task($description, 1);
       $test_Task->save();
-      $test_Task2 = new Task($description2, 1, 1);
+      $test_Task2 = new Task($description2, 1);
       $test_Task2->save();
 
       // Act
@@ -108,7 +108,7 @@
       // Arrange
       $description = "Wash the dog";
       $due_date = '1/18/1999';
-      $test_Task = new Task($description, 1, 1, $due_date);
+      $test_Task = new Task($description, 1, $due_date);
 
       // Act
       $result = $test_Task->getDueDate();
