@@ -126,11 +126,11 @@
 
       $test_category_id = $test_Category->getId();
       $description = "email client";
-      $test_task = new Task($description, $test_category_id, 1, '1999/01/01');
+      $test_task = new Task($description, 1, '1999/01/01');
       $test_task->save();
 
       $description2 = "meet with biscuit head";
-      $test_task2 = new Task($description2, $test_category_id, 2, '2000/01/01');
+      $test_task2 = new Task($description2, 2, '2000/01/01');
       $test_task2->save();
 
       // Act
@@ -148,7 +148,7 @@
 
       $test_category_id = $test_Category->getId();
       $description = "email client";
-      $test_task = new Task($description, $test_category_id);
+      $test_task = new Task($description);
       $test_task->save();
 
       // Act
@@ -162,7 +162,7 @@
       // Assert
       $name = "Work stuff";
       $id = null;
-      $test_category = new Category($name, $id);
+      $test_category = new Category($name);
       $test_category->save();
 
       $new_name = "Home stuff";
@@ -199,7 +199,7 @@
 
       $description = "Build website";
       $category_id = $test_category->getId();
-      $test_task = new Task($description, $category_id);
+      $test_task = new Task($description);
       $test_task->save();
 
       // Act
