@@ -2,12 +2,19 @@
 <html>
   <head>
     <link rel='stylesheet' href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel='stylesheet' href='css/styles.css'>
     <title>To Do List</title>
   </head>
   <body>
 
     <div class='container'>
-      <h1>Welcome to To Do List!!</h1>
+      <div class='page-header'>
+        <img src='/../img/honeydo.png' id='banner-img'><h1>Honey-Do</h1>
+        <h5>sweet productivity</h5>
+      </div>
+      {% if added %}
+        <h3>Task added!</h3>
+      {% endif %}
       {% if categories is not empty %}
         <p>Create a new task</p>
 
@@ -20,12 +27,11 @@
             <label for='due_date'>Task due date:</label>
             <input id='due_date' name='due_date' class='form-control' type='text' required>
           </div>
+          Select categories for task
           <div class='form-group'>
-            <select name='category_id' id='categories'>
-              {% for category in categories %}
-                <option value="{{ category.getId }}">{{ category.getName }}  </option>
-              {% endfor %}
-            </select>
+            {% for category in categories %}
+              <input type="checkbox" name="category_id[]" value="{{ category.getId }}"> {{ category.getName }}<br>
+            {% endfor %}
           </div>
           <button type='submit' class='btn btn-success'>Add task</button>
         </form>
