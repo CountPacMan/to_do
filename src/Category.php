@@ -80,18 +80,6 @@ class Category {
     return $categories;
   }
 
-  // function getTasks() {
-  //   $tasks = [];
-  //   $returned_tasks = $GLOBALS['DB']->query("SELECT * FROM tasks WHERE category_id = {$this->getId()} ORDER BY due_date ASC;");
-  //   foreach ($returned_tasks as $task) {
-  //     $due_date = $task['due_date'];
-  //     $due_date = str_replace("-", "/", $due_date);
-  //     $new_Task = new Task($task['description'], $task['id'], $due_date);
-  //     array_push($tasks, $new_Task);
-  //   }
-  //   return $tasks;
-  // }
-
   static function deleteAll() {
     $GLOBALS['DB']->exec("DELETE FROM categories *;");
   }

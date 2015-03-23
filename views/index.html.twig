@@ -8,13 +8,37 @@
 
     <div class='container'>
       <h1>Welcome to To Do List!!</h1>
+      {% if categories is not empty %}
+        <p>Create a new task</p>
 
-      <p>Create a new category!!</p>
+        <form action='/tasks' method='post'>
+          <div class='form-group'>
+            <label for='description'>Task description:</label>
+            <input id='description' name='description' class='form-control' type='text' required>
+          </div>
+          <div class='form-group'>
+            <label for='due_date'>Task due date:</label>
+            <input id='due_date' name='due_date' class='form-control' type='text' required>
+          </div>
+          <div class='form-group'>
+            <select name='category_id' id='categories'>
+              {% for category in categories %}
+                <option value="{{ category.getId }}">{{ category.getName }}  </option>
+              {% endfor %}
+            </select>
+          </div>
+          <button type='submit' class='btn btn-success'>Add task</button>
+        </form>
+      {% endif %}
+
+      <h3><a href="/tasks">View all tasks</a></h3>
+
+      <p>Create a new category</p>
 
       <form action='/categories' method='post'>
         <div class='form-group'>
           <label for='name'>Category name:</label>
-          <input id='name' name='name' class='form-control' type='text'>
+          <input id='name' name='name' class='form-control' type='text' required>
         </div>
         <button type='submit' class='btn btn-success'>Add category</button>
       </form>
@@ -33,7 +57,7 @@
       <form action='/search' method='post'>
         <div class='form-group'>
           <label for='name'>Task to search:</label>
-          <input id='name' name='name' class='form-control' type='text'>
+          <input id='name' name='name' class='form-control' type='text' required>
         </div>
         <button type='submit' class='btn btn-success'>GIMME</button>
       </form>

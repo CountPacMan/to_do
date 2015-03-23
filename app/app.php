@@ -5,6 +5,8 @@
 
   $app = new Silex\Application();
 
+  $app['debug'] = true;
+
   $DB = new PDO('pgsql:host=localhost;dbname=to_do;password=password');
 
   $app->register(new Silex\Provider\TwigServiceProvider(), array(
@@ -13,6 +15,8 @@
 
   use Symfony\Component\HttpFoundation\Request;
   Request::enableHttpMethodParameterOverride();
+
+  // get
 
   $app->get("/", function() use ($app) {
     return $app['twig']->render('index.html.twig', array('categories' => Category::getAll()));
@@ -24,16 +28,15 @@
   });
 
   $app->get("/categories/{id}/edit", function($id) use ($app) {
-     $category = Category::find($id);
-     return $app['twig']->render('category_edit.html.twig', array('category' => $category));
+    $category = Category::find($id);
+    return $app['twig']->render('category_edit.html.twig', array('category' => $category));
   });
 
-  $app->patch("/categories/{id}", function($id) use ($app) {
-    $name = $_POST['name'];
-    $category = Category::find($id);
-    $category->update($name);
-    return $app['twig']->render('category.html.twig', array('category' => $category, 'tasks' => $category->getTasks()));
+  $app->get("/tasks", function() use ($app) {
+    return $app['twig']->render('tasks.html.twig', array('tasks' => Task::getAll()));
   });
+
+  // post
 
   $app->post("/categories", function() use ($app) {
     $category = new Category($_POST['name']);
@@ -42,9 +45,10 @@
   });
 
   $app->post("/tasks", function() use ($app) {
-    $task = new Task($_POST['description'], $_POST['category_id'], null, $_POST['due_date']);
+    $task = new Task($_POST['description'], null, $_POST['due_date']);
     $task->save();
     $category = Category::find($_POST['category_id']);
+    $category->addTask($task);
     return $app['twig']->render('category.html.twig', array('category' => $category, 'tasks' => $category->getTasks()));
   });
 
@@ -69,6 +73,17 @@
     Category::deleteAll();
     return $app['twig']->render('index.html.twig');
   });
+
+  // patch
+
+  $app->patch("/categories/{id}", function($id) use ($app) {
+    $name = $_POST['name'];
+    $category = Category::find($id);
+    $category->update($name);
+    return $app['twig']->render('category.html.twig', array('category' => $category, 'tasks' => $category->getTasks()));
+  });
+
+  // delete
 
   $app->delete("/categories/{id}", function($id) use ($app) {
     $category = Category::find($id);
