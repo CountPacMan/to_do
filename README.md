@@ -1,5 +1,5 @@
 # To Do Tasks for Epicodus
-## by Daniel Toader and Cynthia Wilhelm
+## by Daniel Toader, Cynthia Wilhelm, and Bryan Borgeson
 ### Date: March 18, 2015
 #### Description
 This is a major update to the Tasks code we had created earlier. Creates tasks and categories and saves them to a PostgreSQL database. User can update and delete categories now.
@@ -12,7 +12,7 @@ This is a major update to the Tasks code we had created earlier. Creates tasks a
 5. Use Composer to install required dependencies in the composer.json file
 6. Start the web app by pointing your browser to the root (http://localhost:8000/)
 
-#### Copyright © 2015, Daniel Toader and Cynthia Wilhelm
+#### Copyright © 2015, Daniel Toader, Cynthia Wilhelm, and Bryan Borgeson
 
 #### License: [MIT](https://github.com/twbs/bootstrap/blob/master/LICENSE")  
 
